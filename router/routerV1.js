@@ -1,0 +1,25 @@
+const express = require('express')
+const verifyAuth = require('../middleware/common/verifyAuth')
+const authRouter = require('./auth')
+const attributeRouter = require('./collections/attribute')
+const categoryRouter = require('./collections/category')
+const tagRouter = require('./collections/tag')
+const loginRouter = require('./login')
+const roleRouter = require('./role')
+const teamRouter = require('./team')
+const uploadRouter = require('./upload')
+const userRouter = require('./user')
+
+const routerV1 = express.Router()
+
+routerV1.use('/authentication', authRouter)
+routerV1.use('/login', loginRouter)
+routerV1.use('/user', userRouter)
+routerV1.use('/team', verifyAuth, teamRouter)
+routerV1.use('/role', verifyAuth, roleRouter)
+routerV1.use('/upload', uploadRouter)
+routerV1.use('/collections/category', verifyAuth, categoryRouter)
+routerV1.use('/collections/attribute', verifyAuth, attributeRouter)
+routerV1.use('/collections/tag', verifyAuth, tagRouter)
+
+module.exports = routerV1

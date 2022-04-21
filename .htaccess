@@ -1,0 +1,17 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/omicroni/public_html/sub_domains/pruvit-api.omicron-it.com"
+PassengerBaseURI "/"
+PassengerNodejs "/home/omicroni/nodevenv/public_html/sub_domains/pruvit-api.omicron-it.com/14/bin/node"
+PassengerAppType node
+PassengerStartupFile app.js
+PassengerAppLogFile "/home/omicroni/public_html/sub_domains/pruvit-api.omicron-it.com/logs/passengar.log"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+SetEnv db_connection_string mongodb+srv://dbomcuser:dbomc1234@cluster0.gxudj.mongodb.net/PruvitCMS?retryWrites=true&w=majority
+SetEnv COOKIE_SECRET 535371f9e255081c72d61d6bcd57c5bc7cf9b2be
+SetEnv JWT_SECRET 535371f9e255081c72f61d6bcd83c5bc7cf9b2dw
+SetEnv JWT_EXPIRE 86400
+SetEnv COOKIE_NAME PRUVIT_CMS
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
