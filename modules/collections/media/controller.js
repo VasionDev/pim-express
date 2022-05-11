@@ -1,7 +1,7 @@
-const { addSnippetCategory, addSnippet, getCategory, getCategoryList, getSnippetList, getSnippet, editSnippetCategory, editSnippetText, deleteSnippetCat, deleteSnippetById } = require("./service")
+const { addMediaCategory, addMedia, getCategoryList, getMediaList, getMedia, getCategory, editMediaCategory, editMedia, deleteMediaCat, deleteMediaById } = require("./service")
 
-const createSnippetCategory = async (req, res, next) => {
-    const response = await addSnippetCategory(req.body)
+const createMediaCategory = async (req, res, next) => {
+    const response = await addMediaCategory(req.body)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -13,8 +13,8 @@ const createSnippetCategory = async (req, res, next) => {
     }
 }
 
-const createTextSnippet = async (req, res, next) => {
-    const response = await addSnippet(req.params.id, req.body)
+const createMedia = async (req, res, next) => {
+    const response = await addMedia(req.params.id, req.body)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -26,7 +26,7 @@ const createTextSnippet = async (req, res, next) => {
     }
 }
 
-const getSnippetCategories = async (req, res, next) => {
+const getMediaCategories = async (req, res, next) => {
     const response = await getCategoryList()
     if(response.status === 200 ) {
         res.json(response)
@@ -39,8 +39,8 @@ const getSnippetCategories = async (req, res, next) => {
     } 
 }
 
-const getSnippets = async (req, res, next) => {
-    const response = await getSnippetList()
+const getMedias = async (req, res, next) => {
+    const response = await getMediaList()
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -52,7 +52,7 @@ const getSnippets = async (req, res, next) => {
     } 
 }
 
-const snippetCatById = async (req, res, next) => {
+const mediaCatById = async (req, res, next) => {
     const response = await getCategory(req.params.id)
     if(response.status === 200 ) {
         res.json(response)
@@ -65,8 +65,8 @@ const snippetCatById = async (req, res, next) => {
     }
 }
 
-const snippetTextById = async (req, res, next) => {
-    const response = await getSnippet(req.params.id)
+const mediaById = async (req, res, next) => {
+    const response = await getMedia(req.params.id)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -78,8 +78,8 @@ const snippetTextById = async (req, res, next) => {
     }
 }
 
-const updateSnippetCategory = async (req, res, next) => {
-    const response = await editSnippetCategory(req.params.id, req.body)
+const updateMediaCategory = async (req, res, next) => {
+    const response = await editMediaCategory(req.params.id, req.body)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -91,8 +91,8 @@ const updateSnippetCategory = async (req, res, next) => {
     }
 }
 
-const updateSnippetText = async (req, res, next) => {
-    const response = await editSnippetText(req.params.id, req.body)
+const updateMedia = async (req, res, next) => {
+    const response = await editMedia(req.params.id, req.body)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -104,8 +104,8 @@ const updateSnippetText = async (req, res, next) => {
     }
 }
 
-const deleteSnippetCategory = async (req, res, next) => {
-    const response = await deleteSnippetCat(req.params.id)
+const deleteMediaCategory = async (req, res, next) => {
+    const response = await deleteMediaCat(req.params.id)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -117,8 +117,8 @@ const deleteSnippetCategory = async (req, res, next) => {
     }
 }
 
-const deleteSnippetText = async (req, res, next) => {
-    const response = await deleteSnippetById(req.params.id)
+const deleteMedia = async (req, res, next) => {
+    const response = await deleteMediaById(req.params.id)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -131,14 +131,14 @@ const deleteSnippetText = async (req, res, next) => {
 }
 
 module.exports = {
-    createSnippetCategory,
-    createTextSnippet,
-    getSnippetCategories,
-    getSnippets,
-    snippetCatById,
-    snippetTextById,
-    updateSnippetCategory,
-    updateSnippetText,
-    deleteSnippetCategory,
-    deleteSnippetText
+    createMediaCategory,
+    createMedia,
+    getMediaCategories,
+    getMedias,
+    mediaCatById,
+    mediaById,
+    updateMediaCategory,
+    updateMedia,
+    deleteMediaCategory,
+    deleteMedia
 }

@@ -175,7 +175,7 @@ const edit = async (categoryID, categoryData) => {
  */
 const getList = async () => {
     try {
-        categories = await Category.find({isChild: false}).sort({name:1})
+        const categories = await Category.find({isChild: false}).sort({name:1})
         return {data: [...categories], status: 200}
     }catch (err) {
         return {msg: err.message, status: 500}

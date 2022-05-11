@@ -1,7 +1,7 @@
-const { addSnippetCategory, addSnippet, getCategory, getCategoryList, getSnippetList, getSnippet, editSnippetCategory, editSnippetText, deleteSnippetCat, deleteSnippetById } = require("./service")
+const { addFaqCategory, addFaq, getCategoryList, getFaqList, getFaqCategory, getFaq, editFaqCategory, editFaq, deleteFaqCat, deleteFaqById } = require("./service")
 
-const createSnippetCategory = async (req, res, next) => {
-    const response = await addSnippetCategory(req.body)
+const createFaqCategory = async (req, res, next) => {
+    const response = await addFaqCategory(req.body)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -13,8 +13,8 @@ const createSnippetCategory = async (req, res, next) => {
     }
 }
 
-const createTextSnippet = async (req, res, next) => {
-    const response = await addSnippet(req.params.id, req.body)
+const createFaq = async (req, res, next) => {
+    const response = await addFaq(req.params.id, req.body)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -26,7 +26,7 @@ const createTextSnippet = async (req, res, next) => {
     }
 }
 
-const getSnippetCategories = async (req, res, next) => {
+const getFaqCategories = async (req, res, next) => {
     const response = await getCategoryList()
     if(response.status === 200 ) {
         res.json(response)
@@ -39,8 +39,8 @@ const getSnippetCategories = async (req, res, next) => {
     } 
 }
 
-const getSnippets = async (req, res, next) => {
-    const response = await getSnippetList()
+const getFaqs = async (req, res, next) => {
+    const response = await getFaqList()
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -52,8 +52,8 @@ const getSnippets = async (req, res, next) => {
     } 
 }
 
-const snippetCatById = async (req, res, next) => {
-    const response = await getCategory(req.params.id)
+const faqCatById = async (req, res, next) => {
+    const response = await getFaqCategory(req.params.id)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -65,8 +65,8 @@ const snippetCatById = async (req, res, next) => {
     }
 }
 
-const snippetTextById = async (req, res, next) => {
-    const response = await getSnippet(req.params.id)
+const faqById = async (req, res, next) => {
+    const response = await getFaq(req.params.id)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -78,8 +78,8 @@ const snippetTextById = async (req, res, next) => {
     }
 }
 
-const updateSnippetCategory = async (req, res, next) => {
-    const response = await editSnippetCategory(req.params.id, req.body)
+const updateFaqCategory = async (req, res, next) => {
+    const response = await editFaqCategory(req.params.id, req.body)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -91,8 +91,8 @@ const updateSnippetCategory = async (req, res, next) => {
     }
 }
 
-const updateSnippetText = async (req, res, next) => {
-    const response = await editSnippetText(req.params.id, req.body)
+const updateFaq = async (req, res, next) => {
+    const response = await editFaq(req.params.id, req.body)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -104,8 +104,8 @@ const updateSnippetText = async (req, res, next) => {
     }
 }
 
-const deleteSnippetCategory = async (req, res, next) => {
-    const response = await deleteSnippetCat(req.params.id)
+const deleteFaqCategory = async (req, res, next) => {
+    const response = await deleteFaqCat(req.params.id)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -117,8 +117,8 @@ const deleteSnippetCategory = async (req, res, next) => {
     }
 }
 
-const deleteSnippetText = async (req, res, next) => {
-    const response = await deleteSnippetById(req.params.id)
+const deleteFaq = async (req, res, next) => {
+    const response = await deleteFaqById(req.params.id)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -131,14 +131,14 @@ const deleteSnippetText = async (req, res, next) => {
 }
 
 module.exports = {
-    createSnippetCategory,
-    createTextSnippet,
-    getSnippetCategories,
-    getSnippets,
-    snippetCatById,
-    snippetTextById,
-    updateSnippetCategory,
-    updateSnippetText,
-    deleteSnippetCategory,
-    deleteSnippetText
+    createFaqCategory,
+    createFaq,
+    getFaqCategories,
+    getFaqs,
+    faqCatById,
+    faqById,
+    updateFaqCategory,
+    updateFaq,
+    deleteFaqCategory,
+    deleteFaq
 }

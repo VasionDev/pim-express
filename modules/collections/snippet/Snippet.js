@@ -5,6 +5,11 @@ const snippetCategory = mongoose.Schema({
         type: String,
         trim: true,
         required: true
+    },
+    textSnippets: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Text_Snippet',
+        default: []
     }
 }, {timestamps: true})
 
