@@ -6,6 +6,11 @@ const faqCategory = mongoose.Schema({
         trim: true,
         required: true
     },
+    note: {
+        type: String,
+        trim: true,
+        default: ''
+    },
     faqs: {
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'Faq',

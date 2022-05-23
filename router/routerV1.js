@@ -28,6 +28,6 @@ routerV1.use('/collections/tag', verifyAuth, tagRouter)
 routerV1.use('/collections/media-category', verifyAuth, mediaRouter)
 routerV1.use('/collections/snippet', verifyAuth, snippetRouter)
 routerV1.use('/collections/faq', verifyAuth, faqRouter)
-routerV1.use('/collections/review', reviewRouter)
+routerV1.use('/collections/review', verifyAuth, reviewRouter)
 
 module.exports = routerV1
