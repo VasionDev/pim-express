@@ -8,7 +8,7 @@ const reviewValidator = [
         .withMessage('name must not be empty and min 2 character.')
         .trim(),
     check('rating')
-        .isInt({min: 1, max: 5})
+        .isNumeric({min: 1, max: 5})
         .withMessage('rating should not be empty and between 1-5 star')
 ]
 
@@ -20,7 +20,7 @@ const reviewUpdateValidator = [
         .trim()
         .optional({nullable: true}),
     check('rating')
-        .isInt({min: 1, max: 5})
+        .isNumeric({min: 1, max: 5})
         .withMessage('rating should not be empty and between 1-5 star')
         .optional({nullable: true})
 ]
