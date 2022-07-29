@@ -7,11 +7,12 @@ const { Review } = require("./Review")
  * @param data 
  * @returns Successful message or Error
  */
-const addReview = async (data) => {
+const addReview = async (data, expandProducts=false) => {
     try {
         const newReview = await new Review({
             ...data
         }).save()
+        if(expandProducts) await newReview.populate('products')
         return {data: {...newReview._doc}, success: 'Review added successfully', status: 200}
     }catch(err) {
         return {msg: err.message, status: 500}
@@ -25,11 +26,12 @@ const addReview = async (data) => {
  * @returns Updated review or error message
  */
 
-const editReview = async (id, data) => {
+const editReview = async (id, data, expandProducts=false) => {
     try {
         const review = await Review.findByIdAndUpdate(id, {
             ...data
         }, {new: true})
+        if(expandProducts) await review.populate('products')
         return {data: {...review._doc}, success: 'Review updated successfully', status: 200}
     }catch (err) {
         return {msg: err.message, status: 500}
@@ -40,9 +42,9 @@ const editReview = async (id, data) => {
  * Get all review
  * @returns All review list
  */
-const getReviewList = async () => {
+const getReviewList = async (expandProducts=false) => {
     try {
-        const reviews = await Review.find().sort({name:1})
+        const reviews = expandProducts ? await Review.find().sort({name:1}).populate('products') : await Review.find().sort({name:1})
         return {data: [...reviews], status: 200}
     }catch (err) {
         return {msg: err.message, status: 500}
@@ -54,10 +56,11 @@ const getReviewList = async () => {
  * @param id 
  * @returns review data / Error message
  */
-const getReview = async (id) => {
+const getReview = async (id, expandProducts=false) => {
     try {
         const review = await Review.findById(id)
         if(review !== null ){
+            if(expandProducts) await review.populate('products')
             return {data: {...review._doc}, status: 200}
         }
         throw Error('Review not found!')

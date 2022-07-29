@@ -1,7 +1,8 @@
 const { addReview, getReviewList, getReview, editReview, deleteReview } = require("./service")
 
 const createReview = async (req, res, next) => {
-    const response = await addReview(req.body)
+    const isExpand = req.query.expandProducts && req.query.expandProducts === 'true' ? true : false
+    const response = await addReview(req.body, isExpand)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -14,7 +15,8 @@ const createReview = async (req, res, next) => {
 }
 
 const getAllReview = async (req, res, next) => {
-    const response = await getReviewList()
+    const isExpand = req.query.expandProducts && req.query.expandProducts === 'true' ? true : false
+    const response = await getReviewList(isExpand)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -27,7 +29,8 @@ const getAllReview = async (req, res, next) => {
 }
 
 const reviewById = async (req, res, next) => {
-    const response = await getReview(req.params.id)
+    const isExpand = req.query.expandProducts && req.query.expandProducts === 'true' ? true : false
+    const response = await getReview(req.params.id, isExpand)
     if(response.status === 200 ) {
         res.json(response)
     }else {
@@ -40,7 +43,8 @@ const reviewById = async (req, res, next) => {
 }
 
 const updateReview = async (req, res, next) => {
-    const response = await editReview(req.params.id, req.body)
+    const isExpand = req.query.expandProducts && req.query.expandProducts === 'true' ? true : false
+    const response = await editReview(req.params.id, req.body, isExpand)
     if(response.status === 200 ) {
         res.json(response)
     }else {
